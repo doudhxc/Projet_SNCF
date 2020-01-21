@@ -1,20 +1,18 @@
-REATE DATABASE tp_sncf;
-USE tp_sncf;
+CREATE DATABASE IF NOT EXISTS `sncf` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `sncf`;
 
-CREATE TABLE `gare` (
-  `id` int(10) NOT NULL,
-  `nom` varchar(10) NOT NULL
-  PRIMARY KEY (`id`)
-); 
+CREATE TABLE IF NOT EXISTS `gare` (
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `nomgare` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE train (
-  `id` int(10) NOT NULL,
-  `Heure Dep` datetime(6) NOT NULL,
-  `Heure Arr` datetime(6) NOT NULL,
-  `Gare Dep` int(10) NOT NULL,
-  `Gare Arr` int(10) NOT NULL,
-   PRIMARY KEY (`id`),
-   FOREIGN KEY (`Gare Dep`) REFERENCES gare(`id`),
-   FOREIGN KEY (`Gare Arr`) REFERENCES gare(`id`)
-) ;
 
+CREATE TABLE IF NOT EXISTS `tgv` ( 
+  `id` int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+  `idgaredepart` int(11) REFERENCES gare(id), 
+  `idgarearrivee` int(11) REFERENCES gare(id), 
+  `horairedepart` date NOT NULL, 
+  `duree` time NOT NULL 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
+
+COMMIT;
