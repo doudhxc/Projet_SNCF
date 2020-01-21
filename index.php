@@ -1,10 +1,10 @@
 <?php
 
-include "param.php";
+include "projet.php";
 
 // C'est la meilleur façon d'exécuter une requête SQL
 // Pour plus d'exemples, voir mysql_real_escape_string()
-$query = "select * from train";
+$query = "select * from tgv";
 
 // Exécution de la requête
 $result = mysql_query($query);
@@ -57,10 +57,10 @@ while ($row = mysql_fetch_assoc($result)) {
     echo "<tr>";
 
     echo "<td>".$row['id']."</td>";
-    echo "<td>".$row['Heure Dep']."</td>";
-    echo "<td>".$row['Heure Arr']."</td>";
-    echo "<td>".$row['Gare Dep']."</td>";
-    echo "<td>".$row['Gare Arr']."</td>";
+    echo "<td>".$row['horairedepart']."</td>";
+    echo "<td>".$row['duree']."</td>";
+    echo "<td>".$row['idgaredepart']."</td>";
+    echo "<td>".$row['idgarearrivee']."</td>";
 
     echo "</tr>";
 
