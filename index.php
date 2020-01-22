@@ -72,5 +72,5 @@ echo "</tbody>
 
 // Libération des ressources associées au jeu de résultats
 // Ceci est effectué automatiquement à la fin du script
-mysqli_free_result($link, $result);
+mysqli_free_result($link);
 ?>
