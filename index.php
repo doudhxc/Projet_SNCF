@@ -7,12 +7,12 @@ include "projet.php";
 $query = "select * from tgv";
 
 // Exécution de la requête
-$result = mysql_query($query);
+$result = mysqli_query($link, $query);
 
 // Vérification du résultat
 // Ceci montre la requête envoyée à MySQL ainsi que l'erreur. Utile pour déboguer.
 if (!$result) {
-    $message  = 'Requête invalide : ' . mysql_error() . "\n";
+    $message  = 'Requête invalide : ' . mysqli_error($link) . "\n";
     $message .= 'Requête complète : ' . $query;
     die($message);
 }
@@ -53,7 +53,7 @@ echo "<table>
             <td>ville arrivee</td>
         </tr>";
 
-while ($row = mysql_fetch_assoc($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
 
     echo "<td>".$row['id']."</td>";
@@ -72,5 +72,5 @@ echo "</tbody>
 
 // Libération des ressources associées au jeu de résultats
 // Ceci est effectué automatiquement à la fin du script
-mysql_free_result($result);
+mysqli_free_result($link, $result);
 ?>
