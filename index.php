@@ -4,7 +4,8 @@ include "projet.php";
 
 // C'est la meilleur façon d'exécuter une requête SQL
 // Pour plus d'exemples, voir mysql_real_escape_string()
-$query = "select * from tgv";
+
+$query = "select a.id, b.nomgare as gare_depart, c.nomgare as gare_arrivee, a.horairedepart, a.duree from tgv a inner join gare b on a.idgaredepart=b.id inner join gare c on a.idgarearrivee=c.id order by horairedepart";
 
 // Exécution de la requête
 $result = mysqli_query($link, $query);
@@ -72,5 +73,5 @@ echo "</tbody>
 
 // Libération des ressources associées au jeu de résultats
 // Ceci est effectué automatiquement à la fin du script
-mysqli_free_result($link);
+mysqli_free_result($link, $result);
 ?>
